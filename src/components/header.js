@@ -1,17 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 import logo from "../images/logo.png"
-import $ from "jquery/src/jquery"
  // important: case sensitive.
- 
+
 
 class HeaderImg extends React.Component {
-
-  componentDidMount() {
-    $('.top-mob').click(function(){
-      $(this).toggleClass('active')
-    })
-  }
 
   render(){
     return(

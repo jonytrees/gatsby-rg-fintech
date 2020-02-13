@@ -3,72 +3,9 @@ import Header from "../../../components/header"
 import Form from "../../../components/form"
 import Footer from "../../../components/footer"
 import "../../../css/style.css"
-import $ from "jquery/src/jquery"
 
 class WebApp extends React.Component {
-  componentDidMount() {
-    var matdom_slide,matdom_left,autoslide;
-    function matdom_next() {
-        var matdom_slide = $('.matdom-slides > .matdom-slide').index($('.matdom-slides > .matdom-slide.active')) + 1;
-        if (matdom_slide===$('.matdom-slides > .matdom-slide').length) {
-            $('.matdom-slides > .matdom-slide.active').removeClass('active');
-            $('.matdom-slides > .matdom-slide:first-child').removeClass('active').addClass('active');
-            matdom_slide = 1;
-        } else {
-            $('.matdom-slides > .matdom-slide.active').removeClass('active').next().removeClass('active').addClass('active');
-            matdom_slide = matdom_slide + 1;
-        }
-
-        $('.matdom-bullets>ul>li.active').removeClass('active');
-        $('.matdom-bullets>ul>li:nth-child('+matdom_slide+')').removeClass('active').addClass('active');
-
-        var matdom_left = 100 * (matdom_slide - 1);
-        $('.matdom-slides').css('marginLeft','-'+matdom_left+'%');
-        return false;
-    }
-
-    $('.matdom-arrow-left').click(function(){
-        matdom_slide = $('.matdom-slides > .matdom-slide').index($('.matdom-slides > .matdom-slide.active')) + 1;
-        if (matdom_slide===1) {
-            $('.matdom-slides > .matdom-slide.active').removeClass('active');
-            $('.matdom-slides > .matdom-slide:last').removeClass('active').addClass('active');
-            matdom_slide = $('.matdom-slides > .matdom-slide').length;
-        } else {
-            $('.matdom-slides > .matdom-slide.active').removeClass('active').prev().removeClass('active').addClass('active');
-            matdom_slide = matdom_slide - 1;
-        }
-        $('.matdom-bullets>ul>li.active').removeClass('active');
-        $('.matdom-bullets>ul>li:nth-child('+matdom_slide+')').removeClass('active').addClass('active');
-        matdom_left = 100 * (matdom_slide - 1);
-        $('.matdom-slides').css('marginLeft','-'+matdom_left+'%');
-        clearInterval(autoslide);
-        autoslide = setInterval(matdom_next,8000);
-    });
-    $('.matdom-arrow-right').click(function(){
-        matdom_next();
-        clearInterval(autoslide);
-        autoslide = setInterval(matdom_next,8000);
-    });
-
-    $('.matdom-bullets>ul>li').click(function(){
-        if (!$(this).hasClass('active')) {
-            matdom_slide = $('.matdom-bullets>ul>li').index($(this)) + 1;
-            $('.matdom-slides > .matdom-slide.active').removeClass('active');
-            $('.matdom-slides > .matdom-slide:nth-child('+matdom_slide+')').removeClass('active').addClass('active');
-
-            $('.matdom-bullets>ul>li.active').removeClass('active');
-            $('.matdom-bullets>ul>li:nth-child('+matdom_slide+')').removeClass('active').addClass('active');
-
-            matdom_left = 100 * (matdom_slide - 1);
-            $('.matdom-slides').css('marginLeft','-'+matdom_left+'%');
-
-            clearInterval(autoslide);
-            autoslide = setInterval(matdom_next,8000);
-        }
-    });
-
-    autoslide = setInterval(matdom_next,8000);
-}
+  
   render(){
     return(
       <>
